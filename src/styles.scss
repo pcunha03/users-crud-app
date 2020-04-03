@@ -3,3 +3,24 @@
 
 // Vendor
 @import '../node_modules/bootstrap/scss/bootstrap.scss';
+
+// Vendor overwrites
+$font-family-sans-serif: 'Roboto', sans-serif;
+$font-size-base: 0.875rem;
+
+// Colors
+$bg-color-light: #e4eaed;
+$bg-color-dark: #323b42;
+
+// Global styles
+header,
+footer {
+  height: 100px;
+  background-color: $bg-color-dark;
+  color: $white;
+  padding: 1rem;
+}
+main {
+  background-color: $bg-color-light;
+  padding: 1.5rem;
+}
