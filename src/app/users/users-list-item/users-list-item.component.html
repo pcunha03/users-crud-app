@@ -1,3 +1,45 @@
-<p>
-  users-list-item works!
-</p>
+<li class="list-group-item py-4">
+  <div class="d-flex justify-content-between align-items-center"
+       *ngIf="!editMode">
+    {{user.name}}
+    <div class="actions-wrapper">
+      <button class="btn btn-sm btn-light mr-3"
+              type="button"
+              (click)="editMode = !editMode">Edit</button>
+      <button class="btn btn-sm btn-danger"
+              type="button"
+              (click)="onDeleteUser(user)">Delete</button>
+    </div>
+  </div>
+  <div *ngIf="editMode">
+    <form
+      (ngSubmit)="editUserForm.form.valid && onEditUser(editUserForm)"
+      #editUserForm="ngForm"
+      novalidate>
+      <div class="form-group mb-0">
+        <div class="d-flex justify-content-between align-items-center">
+          <input
+            type="text"
+            class="form-control form-control-sm w-50 w-sm-100 mr-3"
+            [ngClass]="{'is-invalid': (editUserForm.submitted || userName.touched) && userName.invalid}"
+            id="userName"
+            name="userName"
+            required
+            placeholder="Edit User Name"
+            #userName="ngModel"
+            [(ngModel)]="name">
+          <div class="d-flex justify-content-between align-items-center">
+            <button type="button"
+                    class="btn btn-sm btn-secondary mr-3"
+                    (click)="onCancelEdit()">Cancel</button>
+            <button type="submit" class="btn btn-sm btn-primary">Save</button>
+          </div>
+        </div>
+        <div *ngIf="(editUserForm.submitted || userName.touched) && userName.invalid" class="text-danger">
+          <small *ngIf="userName.errors.required">This field is required</small>
+        </div>
+      </div>
+    </form>
+
+  </div>
+</li>

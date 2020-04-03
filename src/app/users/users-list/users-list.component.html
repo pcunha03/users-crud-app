@@ -1,3 +1,10 @@
-<p>
-  users-list works!
-</p>
+<div *ngIf="usersLoading">
+  Loading users ...
+</div>
+
+<ul class="list-group">
+  <app-users-list-item
+    [user]="user"
+    @fadeInOut
+    *ngFor="let user of users"></app-users-list-item>
+</ul>

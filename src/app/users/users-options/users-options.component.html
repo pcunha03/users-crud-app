@@ -1,3 +1,20 @@
-<p>
-  users-options works!
-</p>
+<div *ngIf="!editAllMode">
+  <button class="btn btn-light btn-sm mr-3"
+          type="button"
+          (click)="onEditAllUsers()">
+    Edit All
+  </button>
+  <button class="btn btn-danger btn-sm"
+          type="button"
+          (click)="onDeleteAllUsers()">
+    Delete All
+  </button>
+</div>
+<div *ngIf="editAllMode">
+  <button class="btn btn-primary btn-sm mr-3"
+          type="button"
+          (click)="onSaveAllUsers()">
+    Save All
+  </button>
+</div>
+<hr>

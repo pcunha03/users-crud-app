@@ -1,3 +1,7 @@
-<p>
-  users works!
-</p>
+<app-new-user></app-new-user>
+<hr>
+<app-users-options
+  *ngIf="users && users.length > 0"></app-users-options>
+<app-users-list
+  [users]="users"
+  [usersLoading]="usersLoading"></app-users-list>

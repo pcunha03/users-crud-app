@@ -24,3 +24,16 @@ main {
   background-color: $bg-color-light;
   padding: 1.5rem;
 }
+button:focus {
+  outline:0;
+}
+button:disabled {
+  cursor: not-allowed;
+}
+
+/* Responsive media queries */
+@include media-breakpoint-down(md) {
+  .w-sm-100 {
+    width: 100% !important;
+  }
+}

@@ -1,3 +1,27 @@
-<p>
-  new-user works!
-</p>
+<form
+  (ngSubmit)="createUserForm.form.valid && onCreateUser(createUserForm)"
+  #createUserForm="ngForm"
+  novalidate>
+  <div class="form-group">
+    <label for="userName">Add New User</label>
+    <div class="d-flex align-items-center">
+      <input
+        type="text"
+        class="form-control form-control w-50 w-sm-100 mr-3"
+        [ngClass]="{'is-invalid': (createUserForm.submitted || userName.touched) && userName.invalid}"
+        id="userName"
+        name="userName"
+        required
+        placeholder="New User Name"
+        #userName="ngModel"
+        [(ngModel)]="name">
+      <button
+        type="submit"
+        class="btn btn-sm btn-primary"
+        [disabled]="!name">Add</button>
+    </div>
+    <div *ngIf="(createUserForm.submitted || userName.touched) && userName.invalid" class="text-danger">
+      <small *ngIf="userName.errors.required">This field is required</small>
+    </div>
+  </div>
+</form>
